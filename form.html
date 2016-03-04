@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Form</title>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="formToWizard.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#SurveyForm").formToWizard({ submitButton: 'SubmitData' })
+        });
+    </script>
+</head>
+<body>
+    <div id="main">
+        <form id="SurveyForm" action="">
+        <fieldset>
+            <legend>User information</legend>
+            <div class="form-group">
+                <label for="College">College</label>    
+                <div class="check-boxes colleges">
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="ACES"> ACES
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="AHS"> AHS
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="BUS"> BUS
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="DGS"> DGS
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="EDUC"> EDUC
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="ENGR"> ENGR
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="FAA"> FAA
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="LAS"> LAS
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="LAW"> LAW
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="LER"> LER
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="LIS"> LIS
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="MDIA"> MDIA
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="MEDC"> MEDC
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="College" value="SOCW"> SOCW
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Semesters" class="control-label">Semesters on Campus</label>
+                <p class="help-block">Include current semester, summer semesters count.</p>
+                <select id="Semesters" class="form-control">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Vehicles">Mode of Transportation</label>    
+                <div class="check-boxes vehicles">
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="Vehicles" value="skates"> skates
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="Vehicles" value="board/scooter"> board/scooter
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="Vehicles" value="wheelchair"> wheelchair
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="Vehicles" value="powerchair"> powerchair
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="Vehicles" value="bicycle"> bicycle
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="Vehicles" value="motorcycle"> motorcycle
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="Vehicles" value="car"> car
+                    </label>
+                    <label class="checkbox-inline">
+                      <input type="checkbox" id="Vehicles" value="bus"> bus
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>House Locations</legend>
+            <p>Mark your past and current house locations</p>
+        </fieldset>
+        <fieldset>
+            <legend>Label Buildings</legend>
+            <p>Create Rectangles and Labels to the buildings you know. On average, users submitted 10 locations.</p>
+        </fieldset>
+        <p>
+            <input class="btn btn-success" id="SubmitData" type="button" value="Submit" />
+        </p>
+        </form>
+    </div>
+</body>
+</html>
