@@ -1,0 +1,32 @@
+/* USER INFO */
+
+// show form
+
+// when form is good
+  // show OK button
+
+// when OK is pressed
+  // show home survey
+
+// when at least once place is selected or 10 seconds pass
+  // show map survey
+
+/* GETTING RECTANGLES */
+
+// when user starts dragging
+  // get x-y coordinates
+
+// when user stops dragging
+  // get x-y coordinates
+  // draw rectangle
+  // show label alert
+
+// when user fills in label
+  // show OK button
+
+// if user presses OK
+  // PUSH to Firebase
+  // update motivator graphic
+
+// if user cancels
+  // undraw rectangle
