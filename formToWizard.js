@@ -46,7 +46,7 @@
             $("#" + stepName + "Prev").bind("click", function(e) {
                 $("#" + stepName).hide();
                 $("#step" + (i - 1)).show();
-                $(submmitButtonName).hide();
+                $(submitButtonName).hide();
                 selectStep(i - 1);
             });
         }
@@ -59,7 +59,7 @@
                 $("#" + stepName).hide();
                 $("#step" + (i + 1)).show();
                 if (i + 2 == count)
-                    $(submmitButtonName).show();
+                    $(submitButtonName).show();
                 selectStep(i + 1);
             });
         }
