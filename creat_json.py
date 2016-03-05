@@ -41,5 +41,7 @@ out_data['labeling'] = [
 ]
 users.append(out_data)
 json.dump(users, fout)
+# json.dump({}, fout)
+
 
 
