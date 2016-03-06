@@ -24,6 +24,14 @@ $(document).ready(function(){
 	  validateCheckboxes("vehicles");
 	})
 
+	$('input[type="checkbox"][name="consent"]').on('change',function(){
+		if($("#consent").is(':checked')) {
+			$('#show-error-consent').hide();
+		} else {
+			$('#show-error-consent').html("<em class='error help-block'>Please agree to this consent</em>").show();
+		}
+	})
+
 	$("#surveyForm").validate({
 		rules: {
 			semesters: {
@@ -55,13 +63,14 @@ $(document).ready(function(){
 	  }
 	});
 
-	$('#semesters, #colleges, #vehicles').on('change', function() {
+	$('#semesters, #colleges, #vehicles, #consent').on('change', function() {
       var invalid = true;
       var collegesError = $('#show-error-colleges').is(':visible');
       var semestersError = $('#semesters-error').is(':visible');
       var vehiclesError = $('#show-error-vehicles').is(':visible');
+      var consentError = $('#show-error-consent').is(':visible');
 
-      if(!collegesError && !semestersError && !vehiclesError) {
+      if(!collegesError && !semestersError && !vehiclesError && !consentError) {
       	invalid = false;
       }
 
