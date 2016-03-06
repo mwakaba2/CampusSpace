@@ -28,27 +28,12 @@
             }
             else if (i == count - 1) {
                 $("#step" + i).hide();
-                createPrevButton(i);
             }
             else {
                 $("#step" + i).hide();
-                createPrevButton(i);
                 createNextButton(i);
             }
         });
-
-        function createPrevButton(i) {
-            var stepName = "step" + i;
-            $("#" + stepName + "commands").append("<a href='#' id='" + stepName + "Prev' class='btn btn-primary prev'>< Back</a>");
-
-            $("#" + stepName + "Prev").bind("click", function(e) {
-                $("#" + stepName).hide();
-                $("#step" + (i - 1)).show();
-                $(okButtonName).hide();
-                $(cancelButtonName).hide();
-                selectStep(i - 1);
-            });
-        }
 
         function createNextButton(i) {
             var stepName = "step" + i;
@@ -59,6 +44,7 @@
                     $("#" + stepName).hide();
                 $("#step" + (i + 1)).show();
                 if (i + 2 == count) {
+                    init2();
                     $(okButtonName).show();
                     $(cancelButtonName).show();
                 }

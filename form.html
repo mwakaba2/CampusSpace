@@ -32,6 +32,7 @@
         Please expand your browser window.
     </div>
     <canvas id="maphomes" width="3675" height="4200"></canvas>
+    <canvas id="mapplaces" width="3675" height="4200"></canvas>
     <div id="main">
         <form id="surveyForm" action="">
         <div id="device-warning">
@@ -101,8 +102,7 @@
                 <input type="text" class="form-control" id="semesters" name="semesters" placeholder="Number of semesters">
             </div>
             <div class="form-group">
-                <label for="vehicles">Mode of Transportation</label><br >
-                <div id="show-error-vehicles"></div>     
+                <label for="vehicles">Mode of Transportation</label><br >   
                 <div class="check-boxes vehicles">
                     <label class="checkbox-inline">
                       <input type="checkbox" name="vehicles" id="vehicles" value="skates"> skates
@@ -146,9 +146,9 @@
         </div>
         </form>
     </div>
+<script src="maphomes.js"></script>
+<script src="mapplaces.js"></script>
 <script type="text/javascript" src="validateForm.js"></script>
 <script type="text/javascript" src="validateHouseCoords.js"></script>
-<script type="text/javascript" src="postFirebase.js"></script>
-<script src="maphomes.js"></script>
 </body>
 </html>

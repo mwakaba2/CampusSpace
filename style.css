@@ -88,15 +88,6 @@ input[type=checkbox] {
     margin-left: 0;
 }
 
-.prev:hover, .next:hover { 
-    background-color:#000; 
-    text-decoration:none;
-}
-
-.prev { 
-    float:left;
-}
-
 .next { 
     float:right;
 }

@@ -3,7 +3,7 @@ var canvas, stage, image, bitmap;
 var homes = [];
 
 function init() {
-
+  $("#mapplaces").hide();
   $(window).scrollTop(1200 - window.innerHeight / 2);
   $(window).scrollLeft(1900 - window.innerWidth / 2);
 
@@ -11,12 +11,12 @@ function init() {
 
 	stage = new createjs.Stage(canvas);
   stage.addEventListener("stagemousedown", handleClick);
-
   image = new Image();
   image.src = "darkmap.png";
   bitmap = new createjs.Bitmap(image);
 	stage.addChild(bitmap);
   stage.update();
+
 }
 function handleClick(event) {
   var g = new createjs.Graphics();
