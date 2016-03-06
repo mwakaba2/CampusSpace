@@ -20,6 +20,9 @@
     <!-- Custom Javascript Files -->
     <script type="text/javascript" src="formToWizard.js"></script>
 
+    <!-- Firebase -->
+    <script src='https://cdn.firebase.com/js/client/2.1.0/firebase.js'></script>
+
 </head>
 <body>
     <div id="main">
@@ -118,11 +121,14 @@
             <legend>Label Buildings</legend>
             <p>Create Rectangles and Labels to the buildings you know. On average, users submitted 10 locations.</p>
         </fieldset>
-        <p>
-            <input class="btn btn-success" id="SubmitData" type="button" value="Submit">
-        </p>
+        <div class="form-group buttons">
+            <input class="btn btn-danger" id="CancelRectangle" type="button" value="Cancel">
+            <input class="btn btn-success" id="SubmitRectangle" type="button" value="Ok">
+        </div>
         </form>
     </div>
 <script type="text/javascript" src="validateForm.js"></script>
+<script type="text/javascript" src="validateHouseCoords.js"></script>
+<script type="text/javascript" src="postFirebase.js"></script>
 </body>
 </html>

@@ -97,3 +97,8 @@ input[type=checkbox] {
 #steps li.current { 
     color:#000;
 }
+
+.buttons {
+    margin-top: 100px;
+    float: right;
+}
