@@ -1,7 +1,7 @@
 var canvas, stage, image, bitmap;
 
-var places = [];
-var topX, topY, botX, botY, entry;
+var place = [0];
+var topX, topY, botX, botY, label;
 
 function init() {
 
@@ -53,16 +53,32 @@ function handleMouseUp(event) {
     g.beginFill(createjs.Graphics.getRGB(212,93,0, 0.3));
     g.drawRect(topX, topY, botX - topX, botY - topY);
 
-    entry = new createjs.Shape(g);
+    var s = new createjs.Shape(g);
     // s.x = stage.mouseX;
     // s.y = stage.mouseY;
 
-    places.push([[topX, topY], [botX, botY]]);
+    place[0] = ([[topX, topY], [botX, botY]]);
 
-    stage.addChild(entry);
+    stage.addChild(s);
     stage.update();
+
+    labelAlert();
   }
 
   stage.removeAllEventListeners("stagemouseup");
   stage.addEventListener("stagemousedown", handleMouseDown);
+}
+
+function handleCancel(event) {
+  stage.removeChildAt(stage.numChildren - 1);
+  stage.update();
+}
+
+function labelAlert() {
+    label = prompt("How should we label this area?");
+    if (label === null) {
+      handleCancel();
+    } else {
+      // push to Firebase
+    }
 }
