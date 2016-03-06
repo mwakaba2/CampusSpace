@@ -1,17 +1,15 @@
 /* Created by jankoatwarpspeed.com */
 
 (function($) {
-    $.fn.formToWizard = function(options) {
-        options = $.extend({  
-            submitButton: "" 
-        }, options); 
-        
+    $.fn.formToWizard = function(options) { 
         var element = this;
 
         var steps = $(element).find("fieldset");
         var count = steps.size();
-        var submitButtonName = "#" + options.submitButton;
-        $(submitButtonName).hide();
+        var okButtonName = "#" + options.okButton;
+        var cancelButtonName = "#" + options.cancelButton;
+        $(okButtonName).hide();
+        $(cancelButtonName).hide();
 
         // 2
         $(element).before("<ul id='steps'></ul>");
@@ -46,21 +44,26 @@
             $("#" + stepName + "Prev").bind("click", function(e) {
                 $("#" + stepName).hide();
                 $("#step" + (i - 1)).show();
-                $(submmitButtonName).hide();
+                $(okButtonName).hide();
+                $(cancelButtonName).hide();
                 selectStep(i - 1);
             });
         }
 
         function createNextButton(i) {
             var stepName = "step" + i;
-            $("#" + stepName + "commands").append("<a href='#' id='" + stepName + "Next' class='btn btn-primary next'>Next ></a>");
+            $("#" + stepName + "commands").append("<a href='#' disabled='disabled' id='" + stepName + "Next' class='btn btn-primary next'>Next ></a>");
 
             $("#" + stepName + "Next").bind("click", function(e) {
-                $("#" + stepName).hide();
+                if(!$("#" + stepName + "Next").is('[disabled=disabled]')) {
+                    $("#" + stepName).hide();
                 $("#step" + (i + 1)).show();
-                if (i + 2 == count)
-                    $(submmitButtonName).show();
+                if (i + 2 == count) {
+                    $(okButtonName).show();
+                    $(cancelButtonName).show();
+                }
                 selectStep(i + 1);
+                }
             });
         }
 
