@@ -1,12 +1,12 @@
 body { 
     font-family:Lucida Sans, Arial, Helvetica, Sans-Serif;
-    font-size: 16px; 
+    font-size: 18px; 
     margin:20px;
 }
 
 #main { 
-    width:960px;
-    margin: 0px auto; 
+    width: 500px;
+    float: right;
     border:solid 1px #b2b3b5; 
     -moz-border-radius:10px; 
     padding:20px; 
@@ -16,7 +16,7 @@ body {
 fieldset { 
     margin: 0 auto;
     border:none; 
-    width:550px;
+    width:400px;
 }
 
 legend { 
@@ -28,29 +28,38 @@ legend {
     font-weight:bold;
 }
 
-input[type=text], input[type=password] { 
+input[type=text] { 
     width:300px; 
     padding:5px; 
     border:solid 1px #000;
 }
 
+input[type=checkbox] {
+    /* All browsers except webkit*/
+    transform: scale(2);
+
+    /* Webkit browsers*/
+    -webkit-transform: scale(2);
+}
+
+
 .error {
-		color: red;
+    color: red;
 }
 
 .check-boxes {
     display: block;
 }
 
-.checkbox-inline {
-    margin-bottom: 10px;
+.check-boxes label {
+    margin: 15px !important;
 }
 
-.colleges-section label:nth-child(9) {
+.colleges-section label:nth-child(6) {
     margin-left: 0;
 }
 
-.vehicles label:nth-child(6) {
+.vehicles label:nth-child(3) {
     margin-left: 0;
 }
 
