@@ -53,14 +53,16 @@
 
         function createNextButton(i) {
             var stepName = "step" + i;
-            $("#" + stepName + "commands").append("<a href='#' id='" + stepName + "Next' class='btn btn-primary next'>Next ></a>");
+            $("#" + stepName + "commands").append("<a href='#' disabled='disabled' id='" + stepName + "Next' class='btn btn-primary next'>Next ></a>");
 
             $("#" + stepName + "Next").bind("click", function(e) {
-                $("#" + stepName).hide();
+                if(!$("#" + stepName + "Next").is('[disabled=disabled]')) {
+                    $("#" + stepName).hide();
                 $("#step" + (i + 1)).show();
                 if (i + 2 == count)
                     $(submitButtonName).show();
                 selectStep(i + 1);
+                }
             });
         }
 

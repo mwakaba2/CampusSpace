@@ -34,6 +34,10 @@ input[type=text], input[type=password] {
     border:solid 1px #000;
 }
 
+.error {
+		color: red;
+}
+
 .check-boxes {
     display: block;
 }
@@ -42,7 +46,7 @@ input[type=text], input[type=password] {
     margin-bottom: 10px;
 }
 
-.colleges label:nth-child(9) {
+.colleges-section label:nth-child(9) {
     margin-left: 0;
 }
 
