@@ -19,8 +19,11 @@ function init() {
   image = new Image();
   image.src = "darkmap.png";
   bitmap = new createjs.Bitmap(image);
-	stage.addChild(bitmap);
-  stage.update();
+
+  setTimeout(function () {
+    stage.addChild(bitmap);
+    stage.update();
+  }, 150);
 
 }
 
@@ -43,8 +46,11 @@ function handleClick(event) {
 
 $("#clearhomes").on('click', function() {
   for(var i = stage.numChildren - 1; i > 0; i--){
-    stage.removeChildAt(i);  
+    stage.removeChildAt(i);
   }
   stage.update();
+  setTimeout(function () {
+    toQuad();
+  }, 100);
   homes = [];
 });
