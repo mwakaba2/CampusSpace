@@ -12,6 +12,10 @@
     }
 }
 
+body {
+  background-color: #111;
+}
+
 #warning {
     color: #ee3311;
     font-size: 50px;
