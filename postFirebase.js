@@ -19,11 +19,11 @@ $(document).ready(function(){
 			"college": collegeNames,
 			"semester": semestersNum,
 			"transportation": vehicleNames,
-			"house": [[1, 3], [5, 7]],
+			"house": homes,
 		}
 		var rect = {
-			"label": "Grainger",
-			"coord": [[1, 1], [2, 4]]
+			"label": label,
+			"coord": place
 		}
 
 		var rectangle = {
