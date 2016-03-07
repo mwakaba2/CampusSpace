@@ -81,46 +81,49 @@ function handleCancel(event) {
 
 function labelAlert() {
     label = prompt("How should we label this area?");
-    label.trim();
-    if (label == "") {
-      alert("You didn't create a label!");
-      labelAlert();
-    } else if (label === null) {
+
+    if (label === null) {
       handleCancel();
     } else {
-      var semestersNum = $("#semesters").val();
-      var collegeNames = [];
-      var vehicleNames = [];
+      label.trim();
+      if (label === "") {
+        alert("You didn't create a label!");
+        labelAlert();
+      } else {
+        var semestersNum = $("#semesters").val();
+        var collegeNames = [];
+        var vehicleNames = [];
 
-      $('#colleges:checked').each(function() {
-          collegeNames.push($(this).val());
-      });
+        $('#colleges:checked').each(function() {
+            collegeNames.push($(this).val());
+        });
 
-      $('#vehicles:checked').each(function() {
-          vehicleNames.push($(this).val());
-      });
+        $('#vehicles:checked').each(function() {
+            vehicleNames.push($(this).val());
+        });
 
-      console.log('Loading:');
-      var user = {
-        "college": collegeNames,
-        "semester": semestersNum,
-        "transportation": vehicleNames,
-        "house": homes,
+        console.log('Loading:');
+        var user = {
+          "college": collegeNames,
+          "semester": semestersNum,
+          "transportation": vehicleNames,
+          "house": homes,
+        }
+        var rect = {
+          "label": label,
+          "coord": place
+        }
+
+        var rectangle = {
+          "user_info": user,
+          "rectangle": rect
+        }
+
+        rectangles.push(rectangle);
+        console.log('Posted:');
+
+        updateBar();
       }
-      var rect = {
-        "label": label,
-        "coord": place
-      }
-
-      var rectangle = {
-        "user_info": user,
-        "rectangle": rect
-      }
-
-      rectangles.push(rectangle);
-      console.log('Posted:');
-
-      updateBar();
     }
 }
 
