@@ -1,13 +1,13 @@
-var canvas, stage, image, bitmap;
 var firebaseLink = 'https://campusspace.firebaseio.com/';
 var rectangles = new Firebase(firebaseLink);
-  
+
 var place = [0];
 var topX, topY, botX, botY, label;
 
 function init2() {
   $("#maphomes").hide();
   $("#mapplaces").show();
+
   $(window).scrollTop(1200 - window.innerHeight / 2);
   $(window).scrollLeft(1900 - window.innerWidth / 2);
 
