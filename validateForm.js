@@ -3,6 +3,7 @@ $(document).ready(function(){
 	/* Avoid refreshing page when user presses enter for semesters input */
 	$("#semesters").keyup(function (e) {
 	    if (e.keyCode == 13) { // enter
+	    	console.log("hi");
 	        return false; //this will stop the default event triggering 
 	    }
 	});
@@ -17,8 +18,6 @@ $(document).ready(function(){
 	  var getArrVal = $('input[type="checkbox"][name="'+name+'"]:checked').map(function(){
 	    return this.value;
 	  }).toArray();
-
-		console.log("name");
 
 	  if(getArrVal.length){
 	    $('#show-error-'+name).hide();
@@ -63,7 +62,7 @@ $(document).ready(function(){
 			semesters: {
 				required: "Enter the number of semesters",
 				digits: "Please enter a number",
-				max: "It's unlikely that you've been here over 300 semesters"
+				max: "It's unlikely that you've been here for that long"
 			}
 		},
 		errorElement: "em",
@@ -78,13 +77,11 @@ $(document).ready(function(){
 		},
 		highlight: function ( element, errorClass, validClass ) {
 			$( element ).addClass( "has-error" ).removeClass( "has-success" );
-			console.log("no semester error true");
 			semestersError = true;
 			checkStepOne(); // because it does this after the check
 		},
 		unhighlight: function (element, errorClass, validClass) {
 			$( element ).addClass( "has-success" ).removeClass( "has-error" );
-			console.log("no semester error false");
 			semestersError = false;
 			checkStepOne(); // because it does this after the check
 	  }
@@ -95,9 +92,6 @@ $(document).ready(function(){
   });
 
 	function checkStepOne() {
-		console.log ("colleges: " + collegesError);
-		console.log ("semesters: " + semestersError);
-		console.log ("consent: " + consentError);
 
 		var invalid = true;
 		

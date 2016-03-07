@@ -44,6 +44,8 @@
                     $("#" + stepName).hide();
                 $("#step" + (i + 1)).show();
                 if (i + 3 == count) {
+                  /* updates map again just in case */
+                  stage.update();
                   /* enables clicking on map */
                   stage.addEventListener("stagemousedown", handleClick);
                 }
@@ -60,7 +62,6 @@
         function selectStep(i) {
             $("#steps li").removeClass("current");
             $("#stepDesc" + i).addClass("current");
-            console.log("STEP");
             setTimeout(function () {
               toQuad();
             }, 100);

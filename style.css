@@ -12,6 +12,10 @@
     }
 }
 
+body {
+  background-color: #111;
+}
+
 #warning {
     color: #ee3311;
     font-size: 50px;
@@ -25,7 +29,7 @@
     text-align: center;
     position: fixed;
     bottom: 20px;
-    width: 460px;
+    width: 360px;
     background-color: #eee;
     padding: 10px;
 }
@@ -90,7 +94,7 @@ legend {
 
 .next {
     float:right;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
 #steps {
@@ -124,4 +128,13 @@ legend {
 
 #step0Next {
   display: none;
+}
+
+.progress {
+  background-color: #fff;
+  display: none;
+}
+
+.progressbar {
+  font-weight: bold;
 }
