@@ -8,8 +8,7 @@ function init2() {
   $("#maphomes").hide();
   $("#mapplaces").show();
 
-  $(window).scrollTop(1200 - window.innerHeight / 2);
-  $(window).scrollLeft(1900 - window.innerWidth / 2);
+  toQuad();
 
 	canvas = document.getElementById("mapplaces");
 

@@ -20,6 +20,7 @@
 
 #device-warning {
     color: #ee3311;
+    opacity: .7;
     font-size: 12.5px;
     text-align: center;
     position: fixed;
@@ -81,8 +82,6 @@ legend {
 }
 
 .prev:hover, .next:hover {
-    background-color:#000;
-    text-decoration:none;
 }
 
 .prev {
@@ -91,6 +90,7 @@ legend {
 
 .next {
     float:right;
+    margin-top: 20px;
 }
 
 #steps {
@@ -120,4 +120,8 @@ legend {
 .buttons {
     margin-top: 100px;
     float: right;
+}
+
+#step0Next {
+  display: none;
 }

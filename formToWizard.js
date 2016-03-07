@@ -1,7 +1,7 @@
 /* Created by jankoatwarpspeed.com */
 
 (function($) {
-    $.fn.formToWizard = function(options) { 
+    $.fn.formToWizard = function(options) {
         var element = this;
 
         var steps = $(element).find("fieldset");
@@ -43,6 +43,10 @@
                 if(!$("#" + stepName + "Next").is('[disabled=disabled]')) {
                     $("#" + stepName).hide();
                 $("#step" + (i + 1)).show();
+                if (i + 3 == count) {
+                  /* enables clicking on map */
+                  stage.addEventListener("stagemousedown", handleClick);
+                }
                 if (i + 2 == count) {
                     init2();
                     $(okButtonName).show();
@@ -56,7 +60,11 @@
         function selectStep(i) {
             $("#steps li").removeClass("current");
             $("#stepDesc" + i).addClass("current");
+            console.log("STEP");
+            setTimeout(function () {
+              toQuad();
+            }, 100);
         }
 
     }
-})(jQuery); 
+})(jQuery);

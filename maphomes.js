@@ -2,15 +2,20 @@ var canvas, stage, image, bitmap;
 
 var homes = [];
 
+function toQuad() {
+  $(window).scrollTop(1200 - window.innerHeight / 2);
+  $(window).scrollLeft(1900 - window.innerWidth / 2 + 250);
+}
+
 function init() {
   $("#mapplaces").hide();
-  $(window).scrollTop(1200 - window.innerHeight / 2);
-  $(window).scrollLeft(1900 - window.innerWidth / 2 - 500);
+
+  toQuad();
 
 	canvas = document.getElementById("maphomes");
 
 	stage = new createjs.Stage(canvas);
-  stage.addEventListener("stagemousedown", handleClick);
+
   image = new Image();
   image.src = "darkmap.png";
   bitmap = new createjs.Bitmap(image);
@@ -34,3 +39,9 @@ function handleClick(event) {
   stage.addChild(s);
   stage.update();
 }
+
+$("#clearhomes").click(function() {
+  stage.removeAllChildren();
+  stage.update();
+  homes = [];
+});
