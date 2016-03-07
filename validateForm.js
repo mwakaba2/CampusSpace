@@ -93,10 +93,7 @@ $(document).ready(function(){
 		console.log ("consent: " + consentError);
 
 		var invalid = true;
-		// var collegesError = $('#show-error-colleges').is(':visible');
-		// var semestersError = $('#semesters-error').is(':visible');
-		// var consentError = $('#show-error-consent').is(':visible');
-
+		
 		if(!collegesError && !semestersError && !consentError) {
 			invalid = false;
 		}

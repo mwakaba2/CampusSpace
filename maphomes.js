@@ -23,6 +23,7 @@ function init() {
   stage.update();
 
 }
+
 function handleClick(event) {
   var g = new createjs.Graphics();
   g.beginFill(createjs.Graphics.getRGB(212,93,0,0.3));
@@ -40,7 +41,7 @@ function handleClick(event) {
   stage.update();
 }
 
-$("#clearhomes").click(function() {
+$("#clearhomes").on('click', function() {
   stage.removeAllChildren();
   stage.update();
   homes = [];
