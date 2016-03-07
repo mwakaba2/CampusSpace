@@ -80,9 +80,6 @@ legend {
     margin-left: 0;
 }
 
-<<<<<<< HEAD
-.next { 
-=======
 .prev:hover, .next:hover {
     background-color:#000;
     text-decoration:none;
@@ -93,7 +90,6 @@ legend {
 }
 
 .next {
->>>>>>> canvas
     float:right;
 }
 
