@@ -23,7 +23,7 @@ function init() {
   setTimeout(function () {
     stage.addChild(bitmap);
     stage.update();
-  }, 150);
+  }, 1500);
 
 }
 
