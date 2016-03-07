@@ -1,154 +1,160 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head>
-    <title>Form</title>
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <title>Form</title>
 
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+  <!-- Optional theme -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> -->
 
-    <!-- jQuery Validate Plugin -->
-    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
-    <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
-    
-    <!-- Custom Javascript Files -->
-    <script type="text/javascript" src="formToWizard.js"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
 
-    <!-- Firebase -->
-    <script src='https://cdn.firebase.com/js/client/2.1.0/firebase.js'></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
 
-    <!-- EaselJS -->
-    <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+  <!-- jQuery Validate Plugin -->
+  <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+
+  <!-- Custom Javascript Files -->
+  <script type="text/javascript" src="formToWizard.js"></script>
+
+  <!-- Firebase -->
+  <script src='https://cdn.firebase.com/js/client/2.1.0/firebase.js'></script>
+
+  <!-- EaselJS -->
+  <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
 
 </head>
 <body onload="init();">
-    <div id="warning">
-        Please expand your browser window.
-    </div>
-    <canvas id="maphomes" width="3675" height="4200"></canvas>
-    <div id="main">
-        <form id="surveyForm" action="">
-        <div id="device-warning">
-            If you are using a touch device, this app will not work. Please switch to a desktop environment.
+  <div id="warning">
+    Please expand your browser window.
+  </div>
+  <canvas id="maphomes" width="3675" height="4200"></canvas>
+  <div id="main">
+    <form id="surveyForm" action="">
+      <div id="device-warning">
+        If you are using a touch device, this app will not work. Please switch to a desktop environment.
+      </div>
+      <fieldset>
+        <legend>User information</legend>
+        <div class="form-group">
+          <label for="vehicles">User Consent</label><br >
+          <p class="help-block">We promise not to tie the information you provide directly to you.</p>
+          <div id="show-error-consent"></div>
+          <label class="checkbox checkbox-inline">
+            <input type="checkbox" name="consent" id="consent"> I agree to allow this project to collect and use the data I provide here.
+          </label>
         </div>
-        <fieldset>
-            <legend>User information</legend>
-            <div class="form-group">
-                <label for="vehicles">User Consent</label><br >
-                <p class="help-block">We promise not to tie the information you provide directly to you.</p>
-                <div id="show-error-consent"></div> 
-                <label class="checkbox-inline">
-                  <input type="checkbox" name="consent" id="consent"> I agree to allow this project to collect and use the data I provide here.  
-                </label>
-            </div>
-            <div class="form-group">
-                <label for="colleges">College</label><br >
-                <div id="show-error-colleges"></div> 
-                <div class="check-boxes colleges-section">
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="ACES"> ACES
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="AHS"> AHS
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="BUS"> BUS
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="DGS"> DGS
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="EDUC"> EDUC
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="ENGR"> ENGR
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="FAA"> FAA
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="LAS"> LAS
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="LAW"> LAW
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="LER"> LER
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="LIS"> LIS
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="MDIA"> MDIA
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="MEDC"> MEDC
-                    </label>
-                    <label for="colleges" class="checkbox-inline">
-                      <input type="checkbox" name="colleges" id="colleges" value="SOCW"> SOCW
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="semesters" class="control-label">Semesters on Campus</label>
-                <p class="help-block">Include current semester, summer semesters count.</p>
-                <input type="text" class="form-control" id="semesters" name="semesters" placeholder="Number of semesters">
-            </div>
-            <div class="form-group">
-                <label for="vehicles">Mode of Transportation</label><br >
-                <div id="show-error-vehicles"></div>     
-                <div class="check-boxes vehicles">
-                    <label class="checkbox-inline">
-                      <input type="checkbox" name="vehicles" id="vehicles" value="skates"> skates
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" name="vehicles" id="vehicles" value="board/scooter"> board/scooter
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" name="vehicles" id="vehicles" value="wheelchair"> wheelchair
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" name="vehicles" id="vehicles" value="powerchair"> powerchair
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" name="vehicles" id="vehicles" value="bicycle"> bicycle
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" name="vehicles" id="vehicles" value="motorcycle"> motorcycle
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" name="vehicles" id="vehicles" value="car"> car
-                    </label>
-                    <label class="checkbox-inline">
-                      <input type="checkbox" name="vehicles" id="vehicles" value="bus"> bus
-                    </label>
-                </div>
-            </div>
+        <div class="form-group">
+          <label for="colleges">College</label><br >
+          <div id="show-error-colleges"></div>
+          <div class="check-boxes colleges-section">
+            <form>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="ACES"> ACES
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="AHS"> AHS
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="BUS"> BUS
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="DGS"> DGS
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="EDUC"> EDUC
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="ENGR"> ENGR
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="FAA"> FAA
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="LAS"> LAS
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="LAW"> LAW
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="LER"> LER
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="LIS"> LIS
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="MDIA"> MDIA
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="MEDC"> MEDC
+              </label>
+              <label for="colleges" class="checkbox checkbox-inline">
+                <input type="checkbox" name="colleges" id="colleges" value="SOCW"> SOCW
+              </label>
+            </form>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="semesters" class="control-label">Semesters on Campus</label>
+          <p class="help-block">Include current semester, summer semesters count.</p>
+          <input type="text" class="form-control" id="semesters" name="semesters" placeholder="Number of semesters">
+        </div>
+        <div class="form-group">
+          <label for="vehicles">Mode of Transportation</label><br >
+          <div id="show-error-vehicles"></div>
+          <div class="check-boxes vehicles">
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox" name="vehicles" id="vehicles" value="skates"> skates
+            </label>
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox" name="vehicles" id="vehicles" value="board/scooter"> board/scooter
+            </label>
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox" name="vehicles" id="vehicles" value="wheelchair"> wheelchair
+            </label>
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox" name="vehicles" id="vehicles" value="powerchair"> powerchair
+            </label>
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox" name="vehicles" id="vehicles" value="bicycle"> bicycle
+            </label>
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox" name="vehicles" id="vehicles" value="motorcycle"> motorcycle
+            </label>
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox" name="vehicles" id="vehicles" value="car"> car
+            </label>
+            <label class="checkbox checkbox-inline">
+              <input type="checkbox" name="vehicles" id="vehicles" value="bus"> bus
+            </label>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>House Locations</legend>
+        <p>If the map has not loaded yet, please give it a minute.
+          Mark your past and current house locations</p>
         </fieldset>
         <fieldset>
-            <legend>House Locations</legend>
-            <p>If the map has not loaded yet, please give it a minute.
-                Mark your past and current house locations</p>
-        </fieldset>
-        <fieldset>
-            <legend>Label Buildings</legend>
-            <p>Create Rectangles and Labels to the buildings you know. On average, users submitted 10 locations.</p>
+          <legend>Label Buildings</legend>
+          <p>Create Rectangles and Labels to the buildings you know. On average, users submitted 10 locations.</p>
         </fieldset>
         <div class="form-group buttons">
-            <input class="btn btn-danger" id="CancelRectangle" type="button" value="Cancel">
-            <input class="btn btn-success" id="SubmitRectangle" type="button" value="Ok">
+          <input class="btn btn-danger" id="CancelRectangle" type="button" value="Cancel">
+          <input class="btn btn-success" id="SubmitRectangle" type="button" value="Ok">
         </div>
-        </form>
+      </form>
     </div>
-<script type="text/javascript" src="validateForm.js"></script>
-<script type="text/javascript" src="validateHouseCoords.js"></script>
-<script type="text/javascript" src="postFirebase.js"></script>
-<script src="maphomes.js"></script>
-</body>
-</html>
+    <script type="text/javascript" src="validateForm.js"></script>
+    <script type="text/javascript" src="validateHouseCoords.js"></script>
+    <script type="text/javascript" src="postFirebase.js"></script>
+    <script src="maphomes.js"></script>
+  </body>
+  </html>
