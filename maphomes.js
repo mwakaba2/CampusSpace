@@ -42,7 +42,9 @@ function handleClick(event) {
 }
 
 $("#clearhomes").on('click', function() {
-  stage.removeChildAt(stage.numChildren - 1);
+  for(var i = stage.numChildren - 1; i > 0; i--){
+    stage.removeChildAt(i);  
+  }
   stage.update();
   homes = [];
 });
