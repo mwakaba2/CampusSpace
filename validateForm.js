@@ -3,7 +3,6 @@ $(document).ready(function(){
 	/* Avoid refreshing page when user presses enter for semesters input */
 	$("#semesters").keyup(function (e) {
 	    if (e.keyCode == 13) { // enter
-	    	console.log("hi");
 	        return false; //this will stop the default event triggering 
 	    }
 	});
