@@ -2,11 +2,14 @@ var firebaseLink = 'https://campusspace.firebaseio.com/';
 var rectangles = new Firebase(firebaseLink);
 
 var place = [0];
+var score = 0;
 var topX, topY, botX, botY, label;
 
 function init2() {
   $("#maphomes").hide();
   $("#mapplaces").show();
+
+  $("#progress").show();
 
   toQuad();
 
@@ -78,7 +81,11 @@ function handleCancel(event) {
 
 function labelAlert() {
     label = prompt("How should we label this area?");
-    if (label === null) {
+    label.trim();
+    if (label == "") {
+      alert("You didn't create a label!");
+      labelAlert();
+    } else if (label === null) {
       handleCancel();
     } else {
       var semestersNum = $("#semesters").val();
@@ -112,5 +119,43 @@ function labelAlert() {
 
       rectangles.push(rectangle);
       console.log('Posted:');
+
+      updateBar();
     }
+}
+
+function updateBar() {
+  var newarea = Math.floor((place[0][1][0] - place[0][0][0]) * (place[0][1][1] - place[0][0][1]) / 3600) + 36;
+
+  score = score + newarea;
+
+  var hue = Math.floor(score / 360);
+
+  var level = "LEVEL " + (hue + 1);
+
+  for (i = 0; i < hue; i++) {
+    if (i % 3 === 2) {
+      level = level + "!";
+    }
+  }
+
+  $("#progressbar").html(level);
+
+  var barHue = "hsl(" + (hue * 72) + ",100%,30%)";
+
+  $("#progressbar").css("background-color", barHue);
+
+  if (score < 360) {
+    $("#progress").css("background-color", "white");
+  } else {
+    var tempHue = "hsl(" + ((hue - 1) * 72) + ",100%,40%)";
+    $("#progress").css("background-color", tempHue);
+    console.log(tempHue);
+    console.log("over 100");
+  }
+
+  var barWidth = (Math.floor((score % 360) / 3.6)) + "%";
+  console.log(barWidth);
+  $("#progressbar").css("width", barWidth);
+
 }

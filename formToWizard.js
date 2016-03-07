@@ -60,7 +60,6 @@
         function selectStep(i) {
             $("#steps li").removeClass("current");
             $("#stepDesc" + i).addClass("current");
-            console.log("STEP");
             setTimeout(function () {
               toQuad();
             }, 100);
