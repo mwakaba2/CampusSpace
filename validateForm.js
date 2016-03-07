@@ -9,8 +9,8 @@ $(document).ready(function(){
 	  if(getArrVal.length){
 	    $('#show-error-'+name).hide();
 	  } else{
-	    $('#show-error-'+name).html("<em class='error help-block'>At least one value must be checked!</em>").show();
-	    return false;      
+	    $('#show-error-'+name).html("<em class='error help-block'>At least one value must be checked</em>").show();
+	    return false;
 	  };
 	}
 
@@ -31,24 +31,26 @@ $(document).ready(function(){
 		rules: {
 			semesters: {
 				required: true,
-				digits: true
+				digits: true,
+				max: 300
 			}
 		},
 		messages: {
 			semesters: {
 				required: "Enter the number of semesters",
-				digits: "Please enter a number"	
+				digits: "Please enter a number",
+				max: "It's unlikely that you've been here over 300 semesters"
 			}
 		},
 		errorElement: "em",
 		errorPlacement: function ( error, element ) {
 			// Add the `help-block` class to the error element
 			error.addClass( "help-block" );
-			if ( element.prop( "type" ) === "checkbox" ) {
-				error.insertAfter( element.parent( "label" ) );
-			} else {
-				error.insertAfter( element );
-			}
+			// if ( element.prop( "type" ) === "checkbox" ) {
+				error.insertBefore( element.parent( "div" ) );
+			// } else {
+				// error.insertAfter( element );
+			// }
 		},
 		highlight: function ( element, errorClass, validClass ) {
 			$( element ).addClass( "has-error" ).removeClass( "has-success" );
@@ -58,7 +60,7 @@ $(document).ready(function(){
 	  }
 	});
 
-	$('#semesters, #colleges, #vehicles, #consent').on('change', function() {
+	$('input').on('change', function() {
       var invalid = true;
       var collegesError = $('#show-error-colleges').is(':visible');
       var semestersError = $('#semesters-error').is(':visible');

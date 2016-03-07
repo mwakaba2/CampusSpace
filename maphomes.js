@@ -5,7 +5,7 @@ var homes = [];
 function init() {
   $("#mapplaces").hide();
   $(window).scrollTop(1200 - window.innerHeight / 2);
-  $(window).scrollLeft(1900 - window.innerWidth / 2);
+  $(window).scrollLeft(1900 - window.innerWidth / 2 - 500);
 
 	canvas = document.getElementById("maphomes");
 
