@@ -19,7 +19,7 @@ function init2() {
   stage.addEventListener("stagemousedown", handleMouseDown);
 
   image = new Image();
-  image.src = "darkmap.png";
+  image.src = "geometry.png";
   bitmap = new createjs.Bitmap(image);
 	stage.addChild(bitmap);
   stage.update();
