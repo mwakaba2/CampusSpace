@@ -1,7 +1,7 @@
 var firebaseLink = 'https://campusspace.firebaseio.com/';
 var rectangles = new Firebase(firebaseLink);
 
-var place = [0];
+var place;
 var score = 0;
 var topX, topY, botX, botY, label;
 
@@ -62,7 +62,7 @@ function handleMouseUp(event) {
     // s.x = stage.mouseX;
     // s.y = stage.mouseY;
 
-    place[0] = ([[topX, topY], [botX, botY]]);
+    place = ([[topX, topY], [botX, botY]]);
 
     stage.addChild(s);
     stage.update();
@@ -94,20 +94,28 @@ function labelAlert() {
         var collegeNames = [];
         var vehicleNames = [];
 
-        $('#colleges:checked').each(function() {
+        $('.colleges-section input:checked').each(function() {
             collegeNames.push($(this).val());
         });
 
-        $('#vehicles:checked').each(function() {
+        $('.vehicles input:checked').each(function() {
             vehicleNames.push($(this).val());
         });
+
+        if (homes.size() === 0) {
+          homes = [[9999,9999]];
+        }
+
+        if (vehicleNames.size() === 0) {
+          vehicleNames = ["walkOnly"];
+        }
 
         console.log('Loading:');
         var user = {
           "college": collegeNames,
           "semester": semestersNum,
           "transportation": vehicleNames,
-          "house": homes,
+          "house": homes
         }
         var rect = {
           "label": label,
@@ -128,7 +136,7 @@ function labelAlert() {
 }
 
 function updateBar() {
-  var newarea = Math.floor((place[0][1][0] - place[0][0][0]) * (place[0][1][1] - place[0][0][1]) / 3600) + 36;
+  var newarea = Math.floor((place[1][0] - place[0][0]) * (place[1][1] - place[0][1]) / 3600) + 36;
 
   score = score + newarea;
 
