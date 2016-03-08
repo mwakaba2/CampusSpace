@@ -17,7 +17,7 @@ function init() {
 	stage = new createjs.Stage(canvas);
 
   image = new Image();
-  image.src = "darkmap.png";
+  image.src = "geometry.png";
   bitmap = new createjs.Bitmap(image);
 
   setTimeout(function () {
