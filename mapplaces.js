@@ -102,15 +102,15 @@ function labelAlert() {
             vehicleNames.push($(this).val());
         });
 
-        if (homes.size() === 0) {
+        if (homes.length === 0) {
           homes = [[9999,9999]];
         }
 
-        if (vehicleNames.size() === 0) {
+        if (vehicleNames.length === 0) {
           vehicleNames = ["walkOnly"];
         }
 
-        console.log('Loading:');
+        // console.log('Loading:');
         var user = {
           "college": collegeNames,
           "semester": semestersNum,
@@ -128,7 +128,7 @@ function labelAlert() {
         }
 
         rectangles.push(rectangle);
-        console.log('Posted:');
+        // console.log('Posted: ' + label);
 
         updateBar();
       }
@@ -161,12 +161,9 @@ function updateBar() {
   } else {
     var tempHue = "hsl(" + ((hue - 1) * 72) + ",100%,40%)";
     $("#progress").css("background-color", tempHue);
-    console.log(tempHue);
-    console.log("over 100");
   }
 
   var barWidth = (Math.floor((score % 360) / 3.6)) + "%";
-  console.log(barWidth);
   $("#progressbar").css("width", barWidth);
 
 }
