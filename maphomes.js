@@ -8,7 +8,7 @@ function toQuad() {
 }
 
 function init() {
-  $("#mapplaces").hide();
+  // $("#mapplaces").hide();
 
   toQuad();
 

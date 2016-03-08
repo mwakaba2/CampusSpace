@@ -6,22 +6,27 @@ var score = 0;
 var topX, topY, botX, botY, label;
 
 function init2() {
-  $("#maphomes").hide();
-  $("#mapplaces").show();
+  // $("#maphomes").hide();
+  // $("#mapplaces").show();
 
   $("#progress").show();
+  setTimeout(function () {
+    $(".share").fadeIn(720);
+  }, 72000);
+
 
   toQuad();
 
-	canvas = document.getElementById("mapplaces");
+	// canvas = document.getElementById("mapplaces");
 
-	stage = new createjs.Stage(canvas);
+	// stage = new createjs.Stage(canvas);
+  stage.removeAllEventListeners();
   stage.addEventListener("stagemousedown", handleMouseDown);
 
-  image = new Image();
-  image.src = "geometry.png";
-  bitmap = new createjs.Bitmap(image);
-	stage.addChild(bitmap);
+  // image = new Image();
+  // image.src = "geometry.png";
+  // bitmap = new createjs.Bitmap(image);
+	// stage.addChild(bitmap);
   stage.update();
 }
 

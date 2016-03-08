@@ -138,3 +138,7 @@ legend {
 .progressbar {
   font-weight: bold;
 }
+
+.share {
+  display: none;
+}
