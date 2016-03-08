@@ -6,12 +6,14 @@ $(document).ready(function(){
 		var collegeNames = [];
 		var vehicleNames = [];
 
-		$('#colleges:checked').each(function() {
-		    collegeNames.push($(this).val());
+		$('.colleges-section input:checked').each(function() {
+			collegeNames.push($(this).val());
+			console.log("pushed college");
 		});
 
-		$('#vehicles:checked').each(function() {
-		    vehicleNames.push($(this).val());
+		$('.vehicles input:checked').each(function() {
+			vehicleNames.push($(this).val());
+			console.log("pushed vehicle");
 		});
 
 		console.log('Loading:');
@@ -19,7 +21,7 @@ $(document).ready(function(){
 			"college": collegeNames,
 			"semester": semestersNum,
 			"transportation": vehicleNames,
-			"house": homes,
+			"house": homes
 		}
 		var rect = {
 			"label": label,
@@ -33,6 +35,5 @@ $(document).ready(function(){
 
 		rectangles.push(rectangle);
 		console.log('Posted:');
- 	});
- });
-
+	});
+});
