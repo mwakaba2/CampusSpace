@@ -142,3 +142,7 @@ legend {
 .share {
   display: none;
 }
+
+canvas {
+  margin-right: 500px;
+}
