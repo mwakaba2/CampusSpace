@@ -139,7 +139,8 @@ legend {
   font-weight: bold;
 }
 
-.share {
+.share,
+.close {
   display: none;
 }
 
