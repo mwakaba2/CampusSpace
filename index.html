@@ -1,25 +1,259 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-    	<meta charset="utf-8">
-    	<title>Campus</title>
-    	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    	<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<html>
+<head>
 
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <meta charset="utf-8">
 
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <title>Map UIUC</title>
 
-		<!-- Firebase -->
-		<script src='https://cdn.firebase.com/js/client/2.1.0/firebase.js'></script>
-  	</head>
-	<body>
-    	</script>
-	</body>
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/sandstone/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+  <!-- Boostrap JS -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+  <!-- jQuery Validate Plugin -->
+  <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+  <script src="http://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+
+  <!-- JavaScript -->
+  <script type="text/javascript" src="formToWizard.js"></script>
+  <script src="maphomes.js"></script>
+
+  <!-- Firebase -->
+  <script src='https://cdn.firebase.com/js/client/2.1.0/firebase.js'></script>
+
+  <!-- EaselJS -->
+  <script src="https://code.createjs.com/easeljs-0.8.2.min.js"></script>
+
+</head>
+<body onload="init();">
+  <div id="warning">
+    Please expand your browser window. If you're on a mobile device, you're going to want to switch to a laptop or desktop.
+  </div>
+  <canvas id="maphomes" width="3675" height="4200"></canvas>
+  <!-- <canvas id="mapplaces" width="3675" height="4200"></canvas> -->
+  <div id="main">
+    <form id="surveyForm" action="">
+      <fieldset>
+        <legend>User information</legend>
+        <p>
+          Thanks for helping us map U of I! We want to know how you personally map out the campus. Whether you're a student, faculty, staff, townie, parent, or even someone that has never set foot on campus, you can help us out. Once we have enough data, we'll create an aggregate map of how different groups of people spatially understand campus. Again, thanks for participating, and have fun!
+        </p>
+        <div class="form-group">
+          <label for="consent">User consent *</label>
+          <p class="help-block">We promise not to tie the information you provide directly to you.</p>
+          <div id="show-error-consent"></div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" name="consent" id="consent"> I agree to allow this project to collect and use the data I provide here.
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>College *</label>
+          <p class="help-block">Check all that you are associated with.</p>
+          <div id="show-error-colleges"></div>
+          <div class="check-boxes colleges-section row">
+            <div class="col-xs-4">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="ACES"> ACES
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="AHS"> AHS
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="BUS"> BUS
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="DGS"> DGS
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="EDUC"> EDUC
+                </label>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="ENGR"> ENGR
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="FAA"> FAA
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="LAS"> LAS
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="LAW"> LAW
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="LER"> LER
+                </label>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="LIS"> LIS
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="MDIA"> MDIA
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="MEDC"> MEDC
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="SOCW"> SOCW
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="colleges" value="none"> none
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="semesters" class="control-label">Length of residency *</label>
+          <p class="help-block">Include current semester. Summer semesters count.</p>
+          <div class="input-group">
+            <input type="text" class="form-control" id="semesters" name="semesters">
+            <span class="input-group-addon">semesters</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="vehicles">Transportation</label>
+          <p class="help-block">Check all that you use to get around campus.</p>
+          <div class="check-boxes vehicles row">
+            <div class="col-xs-6">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="vehicles" value="skates"> skates
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="vehicles" value="board/scooter"> board/scooter
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="vehicles" value="wheelchair"> wheelchair
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="vehicles" value="powerchair"> powerchair
+                </label>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="vehicles" value="bicycle"> bicycle
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="vehicles" value="motorcycle"> motorcycle
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="vehicles" value="car"> car
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="vehicles" value="bus"> bus
+                </label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="vehicles" value="neverBeen"> never been on campus
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Living locations</legend>
+        <p>
+          Click on the map to indicate where you live and have lived. If your haven't lived anywhere on the map, just skip to the next step.
+        </p>
+        <p>
+          You can scroll around the map with your trackpad, scroll wheel, or arrow keys.
+        </p>
+        <a href='#' class="btn btn-default" id="clearhomes">
+          Clear locations
+        </a>
+      </fieldset>
+      <fieldset>
+        <legend>Label places</legend>
+        <p>
+          Time to label the map! Click and drag to mark a rectangular area. You will be prompted to label it afterward. Feel free to label absolutely anything you want to.
+        </p>
+        <p>
+          You can scroll around the map with your trackpad, scroll wheel, or arrow keys. Also, you can zoom out/in to make drawing larger/smaller rectangles easier by holding down Cmd/Ctrl and scrolling or pressing Cmd/Ctrl and -/+.
+        </p>
+        <p>
+          The bar below will fill as you label more places on the map. How many levels can you get to?
+        </p>
+        </fieldset>
+        <div id="progress" class="progress">
+          <div id="progressbar" class="progress-bar progress-bar-striped active" role="progressbar">LEVEL 0</div>
+        </div>
+        <p class="share">
+          The more the merrier! Ask your friends, family, classmates, and professors participate by sending them to <em>tinyurl.com/mapuiuc</em>. We appreciate and welcome everyone's input.
+        </p>
+        <p class="share">
+          Check back here in a couple of weeks to see the results!
+        </p>
+        <p class="close">
+          If you're done, you can simply close the window. We get your labels as you enter them.
+        </p>
+    </form>
+    <div id="device-warning">
+      <p>
+        FYI: If you are using a touch device, this app will not work.
+      </p>
+    </div>
+  </div>
+  <script src="maphomes.js"></script>
+  <script src="mapplaces.js"></script>
+  <script type="text/javascript" src="validateForm.js"></script>
+  <script type="text/javascript" src="validateHouseCoords.js"></script>
+</body>
 </html>
-
-

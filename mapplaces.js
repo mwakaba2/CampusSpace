@@ -10,10 +10,14 @@ function init2() {
   // $("#mapplaces").show();
 
   $("#progress").show();
+
   setTimeout(function () {
     $(".share").fadeIn(720);
   }, 72000);
 
+  setTimeout(function () {
+    $(".close").fadeIn(720);
+  }, 360000);
 
   toQuad();
 
