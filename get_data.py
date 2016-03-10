@@ -6,16 +6,16 @@ import json
 
 def retrieve_data(show_data):
 	firebaseGet = firebase.FirebaseApplication('https://campusspace.firebaseio.com/', None)
-	all_chat_result = firebaseGet.get('', None)
+	results = firebaseGet.get('', None)
 
-	print "No of result:", len(all_chat_result)
-	# print all_chat_result
+	print "No of result:", len(results)
+	# print results
 	# read_lines = 100
 	if show_data:
-		for key in all_chat_result:
-			pprint(all_chat_result[key])
+		for key in results:
+			pprint(results[key])
 
-	return all_chat_result
+	return results
 
 def main():
 	fout = open("./data/retrieved_data.json", 'w+')
